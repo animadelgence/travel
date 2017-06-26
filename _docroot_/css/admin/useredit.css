@@ -1,0 +1,131 @@
+.licence_container
+{
+    border:#00ad6a 2px solid;
+    margin: 10px 10px 0 0;
+}
+.lic_head
+{
+    padding: 10px;
+    background-color: #00ad6a;
+}
+.lic_head h3
+{
+   color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.lic_head h1
+{
+    text-align: right;
+   color: #fff;
+    font-size: 42px;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.lic_head h6{
+    color: #fff;
+}
+.lic_head h1 span{
+    font-size: 12px;
+}
+.lic_list
+{
+    padding: 15px 10px;
+}
+.lic_list ul
+{
+    padding-left: 20px;
+    margin-bottom: 0px;
+}
+.lic_list ul li
+{
+    list-style-type: disc;
+}
+
+.lic_list2
+{
+    padding: 15px 10px;
+    border-top: #00ad6a 1px solid;
+}
+.lic_list2 ul{
+    padding-left: 20px;
+    margin-bottom: 0px;
+}
+.lic_list2 ul li
+{
+    list-style-type: disc;
+    font-style: italic;
+}
+
+/* Glowing Button for Send Invoice (auto renew) */
+/*@-webkit-keyframes glowing {
+  0% { background-color: #700707; -webkit-box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #590505; -webkit-box-shadow: 0 0 40px #FF0000; }
+  100% { background-color: #510505; -webkit-box-shadow: 0 0 3px #B20000; }
+}
+
+@-moz-keyframes glowing {
+  0% { background-color: #700707; -moz-box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #590505; -moz-box-shadow: 0 0 40px #FF0000; }
+  100% { background-color: #510505; -moz-box-shadow: 0 0 3px #B20000; }
+}
+
+@-o-keyframes glowing {
+  0% { background-color: #700707; box-shadow: 0 0 3px #B20000; }
+  50% { background-color: #590505; box-shadow: 0 0 40px #FF0000; }
+  100% { background-color: #510505; box-shadow: 0 0 3px #B20000; }
+} */
+
+/*@keyframes glowing {
+  0% { background-color: #700707; box-shadow: 0 0 3px #B20000; } #B20000
+  50% { background-color: #590505; box-shadow: 0 0 40px #FF0000; }#FF0000
+  100% { background-color: #510505; box-shadow: 0 0 3px #B20000; }#B20000
+}
+
+.glow_btn {
+  -webkit-animation: glowing 1500ms infinite;
+  -moz-animation: glowing 1500ms infinite;
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+}
+*/
+
+.blink_me {
+    background-color: darkred;
+    border-color: darkred;
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 4s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 1.0; }
+    100% { opacity: 0.0; }
+}
+
+@-webkit-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 1.0; }
+    100% { opacity: 0.0; }
+}
+
+@keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 1.0; }
+    100% { opacity: 0.0; }
+}

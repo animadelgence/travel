@@ -1,0 +1,44 @@
+<?php
+
+$controller = strtolower($controller);
+$action = strtolower($action);
+$t = time();
+switch ($controller) {
+    case 'gallery':
+        switch ($action) {
+             case 'galleryview':
+                $this->headLink()
+                    ->prependStylesheet($this->basePath() . '/css/front/style.css?version='.$t)
+                    ->prependStylesheet($this->basePath() . '/css/front/owl.carousel.css?version='.$t)
+                    ->prependStylesheet($this->basePath() . '/css/front/camera.css?version='.$t)
+				    ->prependStylesheet('/css/front/booking/css/booking.css?version='.$t);
+                break;
+            case 'tour':
+                $this->headLink()
+                   ->prependStylesheet($this->basePath() . '/css/front/style.css?version='.$t);
+                break;
+            case 'offer':
+                $this->headLink()
+                    ->prependStylesheet($this->basePath() . '/css/front/style.css?version='.$t);
+                break;
+            case 'blog':
+                $this->headLink()
+                    ->prependStylesheet($this->basePath() . '/css/front/style.css?version='.$t);
+                break;
+            case 'contact':
+                $this->headLink()
+                    ->prependStylesheet($this->basePath() . '/css/front/form.css?version='.$t)
+                    ->prependStylesheet($this->basePath() . '/css/front/style.css?version='.$t);
+                break;
+
+		}
+		break;
+
+	default:
+		break;
+}
+echo $this->headLink()
+        ->prependStylesheet('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+        ->prependStylesheet('//fonts.googleapis.com/css?family=Ubuntu:400,500,700')
+        ->prependStylesheet('//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,600,300');
+?>

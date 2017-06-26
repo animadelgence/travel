@@ -1,0 +1,62 @@
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<h3>
+			<i class="fa fa-angle-right"></i>Edit Tag Details
+		</h3>
+
+		<!-- BASIC FORM ELELEMNTS -->
+		<div class="row mt">
+			<div class="col-lg-12">
+				<div class="form-panel">
+					<form class="form-horizontal style-form" id='tagFormEdit' method="post" action="/tag/tageditsubmit" enctype="multipart/form-data">
+
+						 <?php if(!empty($tagdata)){
+								foreach($tagdata as $key => $val)
+					               { ?>
+					    <input type="hidden" name="tagid" value="<?php echo $val['SFPtagId'];?>">
+						<div class="form-group">
+							<label class="col-md-2 control-label">Tag name :</label>
+							<div class="col-md-10">
+								<input type="text" class="form-control" id="tagName"
+									name='tagName' value="<?php echo ($val['tagName']);?>" />
+								<span class="help-block" style="display:none;" id="tagNameError"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 control-label">Tag description :</label>
+							<div class="col-md-10">
+								<textarea class="form-control" id="tagDesc"
+									name='tagDesc' value=""><?php echo $val['tagDescription'];?></textarea>
+								<span class="help-block" style="display:none;" id="tagDescError"></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 control-label">Replace Code :</label>
+							<div class="col-md-10">
+								<textarea class="form-control" id="replaceCode"
+                                          name='replaceCode' value=""><?php echo $val['replaceCode'];?></textarea>
+								<span class="help-block" style="display:none;" id="replaceCodeError"></span>
+							</div>
+						</div>
+						<div class="btndiv_cls">
+                            <button class="btn_cls" type="button" id="tagBtnSave" value="Save and Continue">Save </button>
+						</div>
+
+                    <?php }
+                            }
+							else
+							{
+							   echo "No records found...";
+							}?>
+					</form>
+				</div>
+				<!-- /form-panel -->
+			</div>
+			<!-- /col-lg-12 -->
+		</div>
+		<!-- /row -->
+	</section>
+	<!--wrapper -->
+</section>
+<!-- /MAIN CONTENT -->

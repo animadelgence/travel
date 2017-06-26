@@ -1,0 +1,48 @@
+<section id="main-content">
+	<section class="wrapper">
+		<h3>
+			<i class="fa fa-angle-right"></i>Add New Tag
+		</h3>
+
+		<!-- BASIC FORM ELEMENTS -->
+		<div class="row mt">
+			<div class="col-lg-12">
+				<div class="form-panel">
+					<form class="form-horizontal style-form" id='addTagForm'
+						method="post" action="/tag/savetag"
+						enctype="multipart/form-data">
+						<div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">Tag name :</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="newtagName" name='newtagName' placeholder="Tag name" required autofocus/>
+							</div>
+                            <span class="help-block" style="display:none;" id="errornewName"></span>
+						</div>
+                        <div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">Tag description :</label>
+							<div class="col-sm-10">
+								<textarea class="form-control" id="newtagDesc" name='newtagDesc' placeholder="Tag description"></textarea>
+							</div>
+                            <span class="help-block" style="display:none;" id="errornewDesc"></span>
+						</div>
+                        <div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">Replace Code :</label>
+							<div class="col-sm-10">
+								<textarea class="form-control" id="newrepCode" name='newrepCode' placeholder="Replace code"></textarea>
+							</div>
+                            <span class="help-block" style="display:none;" id="errornewCode"></span>
+						</div>
+                        <div class="btn_class">
+                            <button class="btn_green btn_useradd" type="button" id='newtagSave' value="Save" >Save</button>
+						</div>
+					</form>
+				</div>
+				<!-- /form-panel -->
+			</div>
+			<!-- /col-lg-12 -->
+	</div>
+		<!-- /row -->
+	</section>
+	<!--/wrapper -->
+</section>
+<!-- /MAIN CONTENT -->

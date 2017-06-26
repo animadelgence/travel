@@ -1,0 +1,150 @@
+
+<section id="main-content">
+	<section class="wrapper">
+		<h3>
+			<i class="fa fa-angle-right"></i>Smartfanpage Template Details
+		</h3>
+		<div class="row mt">
+			<div class="col-md-12">
+				<div class="content-panel" style="padding-top: 5px;">
+
+					<table class="table table-striped table-advance table-hover tbody datatable sortable"
+						name="templateView" id="templateView">
+
+						<thead>
+							<tr>
+								<td style="cursor: pointer; font-weight: bold;" class="hidden-phone"><i
+									class="fa fa-bookmark"></i> Template screenshots</td>
+								<td style="cursor: pointer; font-weight: bold;" class="hidden-phone"><i
+									class="fa fa-bookmark"></i> Template name</td>
+								<td style="cursor: pointer; font-weight: bold;" class="hidden-phone"><i
+									class="fa fa-bookmark"></i> Template upload date</td>
+								<td style="cursor: pointer; font-weight: bold;"><i
+									class="fa fa-bookmark"></i> Action</td>
+							</tr>
+						</thead>
+						<tbody class="my_size">
+							<?php if(!empty($templatedet)){
+                                    $i=0;
+								    foreach($templatedet as $key => $val)
+					                   { $i++;?>
+							<tr	class="manageAll tempId">
+
+								<td class="hidden-phone templateImg"><span class="tempImage tmpImg<?php echo $i; ?>"
+									style="padding: 5px; font-weight: bold;"><img src="<?php echo $val['templateImage'] ?>" onerror="this.src='<?php echo $dynamicPath; ?>/template/demo.jpg'" height="100px" width="100px" />
+								</span></td>
+								<td class="hidden-phone"><span class=""
+									style="width: 80%; display: inline-block;"><?php echo $val['templateViewName'];?>
+								</span></td>
+								<td class="hidden-phone"><span class=""
+									style="width: 80%; display: inline-block;"><?php echo $val['timeStamp'];?>
+								</span></td>
+								<input type="hidden"  class="hidden_class" value="<?php echo $val['templateId']; ?>" />
+								<td class="temp">
+                                    <a href="<?php echo '/template/templateedit/'.$val['templateId'];?>" title="Edit template">
+                                            <button class="btn btn-primary btn-xs editTemplate">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                            </button>
+                                    </a>
+									        <button class="btn btn-danger btn-xs delTemplate" title="Delete template">
+										        <i class="fa fa-trash-o"></i>
+									        </button>
+                                    <a href="javascript:void(0)" title="Migrate template">                           <button class="btn btn-primary btn-xs migrateTemplate" data-id="<?php echo $i; ?>">
+                                                <i class="fa fa-arrows" aria-hidden="true"></i>
+                                            </button>
+                                    </a>
+                                            <button class="btn btn-primary btn-xs temp_hide" data-id="<?php echo $i; ?>" title="Hide template" <?php if(($val['approval'] == '1')){ echo "style='display: inline;'";} else{ echo "style='display: none;'";}?> >Hide</button>
+                                            <button class="btn btn-primary btn-xs temp_show" data-id="<?php echo $i; ?>" title="Show template" <?php if(($val['approval'] == '1')){ echo "style='display: none;'";} else{ echo "style='display: inline;'";}?> >Show</button>
+                                            <div id="drpdwn_content" class="submenu dropdown<?php echo $i; ?>">
+                                                    <a href="<?php echo '/template/migratetemplate/'.$val['templateId'].'/test';?>" class="menuitem" title="dev3.scampaigns.com">Migrate to test</a>
+                                                    <a href="<?php echo '/template/migratetemplate/'.$val['templateId'].'/live';?>" class="menuitem" title="app.smartfanpage.com">Migrate to live</a>
+                                            </div>
+								</td>
+							</tr>
+							<?php }
+                            }
+							else
+							{
+							   echo "No records found...";
+							}?>
+						</tbody>
+					</table>
+				</div>
+				<!-- /content-panel -->
+			</div>
+			<!-- /col-md-12 -->
+		</div>
+		<!-- /row -->
+
+	</section>
+	<!-- /wrapper -->
+
+	<!--delete popup-->
+	<section id="dynamicpagecreatepopup" class="popupFormForDynamicPage chang_PPopup_conta">
+	<div id="" class="chang_PPopup">
+    <div class="tab-content" style="border:0px solid;width:490px;">
+		<form class="form-popup" style="margin-top: 0px;" method="POST" action="/template/deltemplate" enctype="multipart/form-data">
+			 <a class="close" href="javascript:void(0)" onclick="$('#dynamicpagecreatepopup').hide();" style="margin: 10px 10px 0 0px;"><i aria-hidden="true" class="fa fa-times"></i></a>
+			<h2 class="form-login-heading">Delete Template</h2>
+			<div class="login-wrap" style="overflow:hidden;text-align:center;">
+				<input type="hidden" name="hidden_id" value="" class="hidden_id" id="hidden_userid">
+				<h4 class="form-login-heading">Are you sure you want to delete this template?</h4>
+				<div style="overflow:hidden;display:inline-block;">
+                    <input type="button" class="popup_cancel" onclick="$('#dynamicpagecreatepopup').hide();" id="btn"  value="CANCEL"/>
+					<input type="submit" class="popup_ok" value="OK"/>
+				</div>
+			</div>
+		</form>
+	</div>
+    <!--tab-content-->
+    </div>
+    </section>
+    <!-- /delete popup-->
+
+    <!--hide-template popup-->
+	<section id="dynamichidecreatepopup" class="popupFormForDynamicPage chang_PPopup_conta">
+	<div id="" class="chang_PPopup">
+    <div class="tab-content" style="border:0px solid;width:490px;">
+			 <a class="close" href="javascript:void(0)" onclick="$('#dynamichidecreatepopup').hide();" style="margin: 10px 10px 0 0px;"><i aria-hidden="true" class="fa fa-times"></i></a>
+			 <div class="form-popup" style="margin-top: 0px;">
+			 <h2 class="form-login-heading">Hide Template</h2>
+			 <div class="login-wrap" style="overflow:hidden;text-align:center;">
+				<input type="hidden" name="hidden_id" value="" class="hidden_id" id="hidden_dataid_hide">
+				<h4 class="form-login-heading">Are you sure you want to hide this template?</h4>
+				<div style="overflow:hidden;display:inline-block;">
+                    <input type="button" class="popup_cancel" onclick="$('#dynamichidecreatepopup').hide();" id="btn"  value="CANCEL"/>
+					<input type="button" class="popup_ok hideTemplate" id="hideTemplate" value="OK"/>
+					<input type="hidden" name="hidden_tempid" value="" class="hidden_tempid" id="hidden_tempid_hide" />
+				</div>
+			</div>
+            </div>
+	</div>
+    <!--tab-content-->
+    </div>
+    </section>
+    <!-- /hide-template popup-->
+
+    <!--show-template popup-->
+	<section id="dynamicshowcreatepopup" class="popupFormForDynamicPage chang_PPopup_conta">
+	<div id="" class="chang_PPopup">
+    <div class="tab-content" style="border:0px solid;width:490px;">
+			 <a class="close" href="javascript:void(0)" onclick="$('#dynamicshowcreatepopup').hide();" style="margin: 10px 10px 0 0px;"><i aria-hidden="true" class="fa fa-times"></i></a>
+            <div class="form-popup" style="margin-top: 0px;">
+			<h2 class="form-login-heading">Show Template</h2>
+			<div class="login-wrap" style="overflow:hidden;text-align:center;">
+				<input type="hidden" name="hidden_id" value="" class="hidden_id" id="hidden_dataid_show">
+				<h4 class="form-login-heading">Are you sure you want to show this template?</h4>
+				<div style="overflow:hidden;display:inline-block;">
+                    <input type="button" class="popup_cancel" onclick="$('#dynamicshowcreatepopup').hide();" id="btn"  value="CANCEL"/>
+					<input type="button" class="popup_ok showTemplate" id="showTemplate" value="OK"/>
+					<input type="hidden" name="hidden_tempid" value="" class="hidden_tempid" id="hidden_tempid_show" />
+				</div>
+			</div>
+            </div>
+	</div>
+    <!--tab-content-->
+    </div>
+    </section>
+    <!-- /show-template popup-->
+</section>
+<!-- /MAIN CONTENT -->

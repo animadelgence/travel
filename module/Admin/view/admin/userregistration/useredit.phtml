@@ -1,0 +1,149 @@
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<h3>
+			<i class="fa fa-angle-right"></i>Upgrade Subscription Plan
+		</h3>
+
+		<!-- BASIC FORM ELELEMNTS -->
+		<div class="row mt">
+			<div class="col-lg-12">
+				<div class="form-panel">
+					<form class="form-horizontal style-form" id='userFormEdit'
+						method="post"
+						action="/userregistration/usereditsubmit"
+						 enctype="multipart/form-data">
+
+						 <?php if(!empty($publisherdet)){
+								foreach($publisherdet as $key => $val)
+					               { ?>
+					    <input type="hidden" name="userid" value="<?php echo $val['publisherId'];?>">
+						<div class="form-group">
+							<label class="col-sm-4 control-label">Email :</label>
+							<div class="col-md-6">
+								<input type="text" class="form-control" id="userEmail"
+									name='userEmail' value="<?php echo $val['email'];?>" readonly />
+								<span class="help-block" style="display:none;" id="user_email_span">Please enter the email of user</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">Status :</label>
+							<div class="col-md-6">
+								<select class="form-control userStatus" name="userStatus">
+											<option value="Activated" <?php if(($val['status'] == "Activated")) echo "selected"; ?>>Activated</option>
+											<option value="Deactivated" <?php if(($val['status'] == "Deactivated") || ($val['status'] == "")) echo "selected"; ?>>Deactivated</option>
+								</select>
+								<span class="help-block" style="display:none;" id="user_status_span">Please enter the status of user</span>
+							</div>
+						</div>
+                       <div class="common" >
+                        <div class="form-group common">
+                            <label class="col-sm-4 control-label">Activate account till 2050 :</label>
+                            <div class="col-sm-4 checkbox_class">
+                                <input type="checkbox" name="checkbox" id="checkbox_id" value="lifetime" />
+                            </div>
+                        </div>
+                        <div class="form-group hide_on_check common">
+							<label class="col-sm-4 control-label">Payment Mode :</label>
+							<div class="col-sm-4 radio">
+								<label class='radio_class'>
+								    <input type="radio"
+									name="payMode" id="optionMonthly" value="Monthly" <?php if(($val['subscriptionType'] == "Monthly") || (($val['subscriptionType'] == ""))) echo "checked"; ?>>
+									Monthly
+								</label>
+								 <label class='radio_class'>
+								    <input type="radio"
+									name="payMode" id="optionYearly" value="Yearly" <?php if(($val['subscriptionType'] == "Yearly")) echo "checked"; ?>>
+									Yearly
+								 </label>
+								<input type="hidden" name="optionsRadios"
+									id="optionsRadios" value="<?php echo $val['subscriptionType']; ?>">
+							</div>
+						  </div>
+                          <div class="form-group hide_on_check common">
+							<label class="col-sm-4 control-label">Auto Renew :</label>
+							<div class="col-sm-4 radio">
+								 <label class='radio_class'>
+								    <input type="radio"
+									name="autorenew" id="setauto" value="setAutoRenew" />
+									Set auto-renew
+								 </label>
+								 <label class='radio_class'>
+								    <input type="radio"
+									name="autorenew" id="removeauto" value="removeAutoRenew" />
+									Remove auto-renew
+								 </label>
+							</div>
+                            <div class="col-md-4 renewDate" style="display:none;">
+								 <input type="text" name="autoRenewDate" id="autoRenewDate" class="form-control datepicker" />
+								 <span class="help-block dateErrorMsg" style="display:none; color: red;" id="autoRenewDate">Please enter the date</span>
+							</div>
+						</div>
+						<div class="form-group hide_on_check common">
+						<label class="col-sm-4 control-label">Customize date :</label>
+							<div class="col-md-6">
+								 <input type="text" name="customDate" class="form-control datepicker" value="<?php echo $val['Subscriptiondate'];?>" required />
+								 <span class="help-block dateErrorMsg" style="display:none; color: red;" id="user_status_span">Please enter the date</span>
+							</div>
+                        </div>
+                        <div class="form-group hide_on_check common">
+							<label class="col-sm-4 control-label">Select payment method:</label>
+							<div class="col-sm-4 radio">
+								<label class=' radio_class'>
+								    <input type="radio"
+									name="payMethod" id="standardPay" value="Standard" <?php if(($val['licensePlan'] == "Professional")){ echo "";}else{echo "checked"; } ?> />
+									Standard
+								</label>
+								 <label class='radio_class'>
+								    <input type="radio"
+									name="payMethod" id="profPay" value="Professional" <?php if(($val['licensePlan'] == "Professional")) echo "checked"; ?> />
+									Professional
+								 </label>
+							</div>
+						</div>
+                        </div>
+						<div class="btndiv_cls">
+                            <button class="btn_cls" type="button" id='btnSave' value="Save and Continue">Save and Continue</button>
+						</div>
+
+                    <?php }
+                            }
+							else
+							{
+							   echo "No records found...";
+							}?>
+					</form>
+				</div>
+				<!-- /form-panel -->
+			</div>
+			<!-- /col-lg-12 -->
+
+
+		</div>
+		<!-- /row -->
+	</section>
+	<!--wrapper -->
+
+	<!--unpublish popup -->
+	<section id="dynamicunpublishpopup" class="popupFormForDynamicPage chang_PPopup_conta">
+	<div id="" class="chang_PPopup">
+    <div class="tab-content" style="border:0px solid;width:490px;">
+		<form class="form-popup" style="margin-top: 0px;" action="" enctype="multipart/form-data">
+			 <a class="close" href="javascript:void(0)" onclick="$('#dynamicunpublishpopup').hide();" style="margin: 10px 10px 0 0px;"><i aria-hidden="true" class="fa fa-times"></i></a>
+			<h2 class="form-login-heading">Deactivate User</h2>
+			<div class="login-wrap" style="overflow:hidden;text-align:center;">
+				<input type="hidden" name="hidden_id" value="" id="hidden_userid" class="hidden_id" />
+				<h4 class="form-login-heading">Upon deactivating this account, all the related published templates will be unpublished, and the end user will no longer be able to see the related published templates.<br><br> Are you sure you want to deactivate this account?</h4>
+				<div style="overflow:hidden;display:inline-block;">
+                    <input type="button" class="popup_cancel" onclick="$('#dynamicunpublishpopup').hide();" id="btn" value="CANCEL"/>
+                    <input type="button" class="popup_cancel" onclick="$('#dynamicunpublishpopup').hide();" id="btn" value="OK"/>
+				</div>
+			</div>
+		</form>
+	</div><!--tab-content-->
+    </div>
+    </section>
+    <!-- /unpublish popup-->
+
+</section>
+<!-- /MAIN CONTENT -->

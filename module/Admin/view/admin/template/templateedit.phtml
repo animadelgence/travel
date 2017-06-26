@@ -1,0 +1,73 @@
+<!--main content start-->
+<section id="main-content">
+	<section class="wrapper">
+		<h3>
+			<i class="fa fa-angle-right"></i>Edit Template
+		</h3>
+
+		<!-- BASIC FORM ELELEMNTS -->
+		<div class="row mt">
+			<div class="col-lg-12">
+				<div class="form-panel">
+					<form class="form-horizontal style-form" id='templateEdit'
+						method="post"
+						action="/template/updatetemplate/<?php echo $templatedet[0]['templateId'];?>" enctype="multipart/form-data">
+						<div class="form-group">
+                            <label class="col-sm-2 control-label">Screenshot Image : <label><label class="col-sm-12"></label><small>(Image should not be more than 1MB or 640 X 480 in size and should be of type gif/png/jpg/jpeg only)</small></label>
+                            </label>
+							<div class="col-sm-10">
+								<input type="file" class="form-control" name="fileupload"
+									id="fileupload" style='height: 30%;' required />
+								<div id="upload_prev" class="upload_prev">
+									<?php if(!empty($templatedet[0]['templateImage'])){?>
+									<img class="image" src="<?php echo $templatedet[0]['templateImage'] ?>" onerror="this.src='<?php echo $dynamicPath; ?>/template/demo.jpg'" height="100px" width="100px" style="margin: 5px 12em 0 0;" />
+									<?php } else{ ?>
+
+                                     <img src=""  height="100px" />
+                                    <?php }?>
+								</div>
+								<label id="errorImg1" style="margin-right: 10em;"></label><!--img extnsn valid-->
+								<label id="errorImg2" style="margin-right: 10em;"></label><!--img size(>1MB) valid-->
+								<label id="errorImg3" style="margin-right: 10em;"></label><!--blank image valid-->
+								<input type="hidden" name="tempFolder" id="tempFolder" value="<?php echo $templatedet[0]['templateFolder'];?>" />
+							</div>
+
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">Template Name :</label>
+							<div class="col-sm-10">
+								<input type="text" aria-required="true" aria-invalid="true"
+									class="form-control" id="tempName" name='tempName' value="<?php echo $templatedet[0]['templateName']; ?>" required />
+								<label id="errorName" style="margin-right: 10em;"></label>
+							</div>
+						</div>
+                        <div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">Conversion Rate :</label>
+							<div class="col-sm-10">
+								<input type="text" aria-required="true" aria-invalid="true"
+									class="form-control" id="conversionRate" name='conversionRate' value="<?php echo $templatedet[0]['conversionRate']; ?>" required />
+								<label id="errorRate" style="margin-right: 10em;"></label>
+							</div>
+						</div>
+                        <div class="form-group">
+							<label class="col-sm-2 col-sm-2 control-label">Published Link :</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="publishLink" name="publishLink" value="<?php echo $templatedet[0]['liveLink']; ?>" required />
+								<label id="errorLink" style="margin-right: 10em;"></label>
+						</div>
+						</div>						
+						<input type="hidden" name="tempId" id="tempId" value="<?php echo $templatedet[0]['templateId'];?>">
+						<div class="col-md-7 temp_btn">
+                            <button class="btn_green btn_useradd" type="button" style="margin: 35px !important;" id='btnSave' value="Save">Save</button>
+						</div>
+					</form>
+				</div>
+				<!-- /form-panel -->
+			</div>
+			<!-- /col-lg-12 -->
+		</div>
+		<!-- /row -->
+	</section>
+	<!--wrapper -->
+</section>
+<!-- /MAIN CONTENT -->

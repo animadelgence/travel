@@ -1,0 +1,322 @@
+<div class="banner">
+    <div class="inner">
+
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Account settings</h1>
+            </div>
+        </div><!--row-->
+
+    </div>
+</div><!--banner-->
+
+
+<div class="account">
+    <div class="inner">
+
+        <div class="row">
+            <div class="col-xs-12 account-image">
+                <form action="/p/saveimage" enctype="multipart/form-data" name="profile-image-change-form" method="post" id="profileimagechangeform">
+                    <div class="profile_pic_thumb">
+                        <img src="<?php if($ProfilePicture!= "" && @getimagesize($ProfilePicture)){echo $ProfilePicture; }else{echo "/img/editor/profile-default.png";}?>" alt="facebook" />
+                        <div class="profile_pic_hover">
+                            <a href="#"><i class="fa fa-camera" aria-hidden="true"></i> Browse</a>
+                            <input type="file" name="profileimage" id="imagechange" />
+                        </div>
+                    </div>
+                </form>
+                <span><?php echo $loggedInUserName; ?></span>
+
+
+            </div>
+        </div><!--row-->
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 acc-info">
+                <h2>Accountinfo</h2>
+
+                <form>
+                    <label for="acc-name">Name:</label>
+                    <input type="text" name="account-name" id="acc-name" value="<?php echo $loggedInUserName; ?>" />
+                    <label for="acc-tel">Telephone number:</label>
+                    <input type="text" name="account-tel" id="acc-tel" value="<?php echo $result[0]['phone']; ?>" />
+
+                    <label for="acc-email">E-mailaddress:</label>
+                    <input type="text" readonly="readonly" name="acc-email" id="acc-email" value="<?php echo $email; ?>"/>
+
+                    <input type="submit" name="acc-submit"  id="changePersonalDetails" value="Save" /><br/>
+                    <span class="span--error_msg" style="margin: 20px 0 !important;"></span>
+                </form>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 change-pass">
+                <h2>Change password</h2>
+
+                <form method="post" action="/p/changepassword" enctype="multipart/form-data" id="form__changepassword">
+                    <label for="acc-cur-pass">Current password:</label>
+                    <input type="password" name="acc-cur-pass" id="acc-cur-pass" />
+
+                    <label for="acc-pass">New password:</label>
+                    <input type="password" name="acc-pass" id="acc-pass" />
+
+                    <label for="acc-pass-rep">Repeat password:</label>
+                    <input type="password" name="acc-pass-rep" id="acc-pass-rep" />
+
+                    <input type="submit" id="changepassword" name="pass-submit" value="Save" /><br/>
+                    <span class="div--error_secondmsg" style="margin: 20px 0 !important;"></span>
+                </form>
+            </div>
+        </div><!--row-->
+
+        <div class="divider"></div>
+
+        <div class="row" >
+            <div class="col-xs-12 payment-wrap">
+
+                <h2>Payment plan</h2>
+
+                <p>An online campaign doesn’t have to be expensive. You can already start today for only €47,- a month!</p>
+
+            </div>
+        </div><!--row-->
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+
+                <div class="payment-plan <?php if ($result[0]['licensePlan'] == 'Free Trial') { ?>active<?php } ?>">
+                    <div class="top">
+                        <h3>Trial account</h3>
+                        <div class="price">
+                            <i class="fa fa-eur" aria-hidden="true"></i>
+                            <span class="number">0</span>
+                            <span class="period">/m</span>
+                        </div>
+                    </div>
+                    <?php if ($result[0]['licensePlan'] == 'Free Trial' && $result[0]['status'] == 'Deactivated') { ?>
+                    <div class="remaining">
+                        <span><?php echo $result[0]['status']; ?></span>
+                    </div>
+                    <?php } ?>
+
+                    <?php if ($result[0]['licensePlan'] == 'Free Trial' && $result[0]['status'] == 'Activated') { ?>
+                    <div class="remaining">
+                        <span><?php echo $remainingdays; ?> remaining</span>
+                    </div>
+                    <?php } ?>
+
+
+                    <ul>
+                        <li>Maximum of 10 campaigns live at the same time</li>
+                        <li>All templates available</li>
+                        <li>Support over phone</li>
+                        <li>Acces to quiz, contests and viral campaigns</li>
+                    </ul>
+                    <?php if ($result[0]['licensePlan'] == 'Free Trial' && $result[0]['status'] == 'Activated') { ?>
+                    <div class="bottom active">
+
+                        <button class="upgradelink">
+                            <span>Current plan</span>
+                        </button>
+
+                    </div>
+                    <?php } else if (($result[0]['licensePlan'] == 'Professional' && $result[0]['status'] == 'Activated') || ($result[0]['licensePlan'] == 'Standard' && $result[0]['status'] == 'Activated')) { ?>
+                    <div class="bottom DowngradeLink">
+
+                        <button>
+                            <a href="javascript:void(0);">Downgrade</a>
+                        </button>
+
+                    </div>
+
+                    <?php } else {
+                        
+                    } ?>
+                </div><!--payment-plan-->
+
+            </div>
+
+            <div class="col-xs-12 col-sm-3">
+
+                <div class="payment-plan <?php if ($result[0]['licensePlan'] == 'Standard' && $result[0]['status'] == 'Activated') { ?>active<?php } ?>">
+                    <div class="top">
+                        <h3>Standard</h3>
+                        <div class="price">
+                            <i class="fa fa-eur" aria-hidden="true"></i>
+                            <span class="number">47</span>
+                            <span class="period">/m</span>
+                        </div>
+                    </div>
+<?php if ($result[0]['licensePlan'] == 'Standard' && $result[0]['status'] == 'Deactivated') { ?>
+                        <div class="remaining">
+                            <span><?php echo $result[0]['status']; ?></span>
+                        </div>
+<?php } ?>
+<?php if ($result[0]['licensePlan'] == 'Standard' && $result[0]['status'] == 'Activated') { ?>
+                        <div class="remaining">
+                            <span><?php if ($result[0]['subscriptionType'] == 'Monthly') { ?>Automatic renewal after <?php echo $remainingdays;
+                } else {
+                    echo $remainingdays; ?> remaining <?php } ?></span>
+                        </div>
+<?php } ?>
+                    <ul>
+                        <li>Maximum of 10 campaigns live at the same time</li>
+                        <li>All templates available</li>
+                        <li>Support over phone</li>
+                        <li>Acces to quiz, contests and viral campaigns</li>
+                    </ul>
+<?php if ($result[0]['licensePlan'] == 'Standard' && $result[0]['status'] == 'Activated') { ?>
+                        <div class="bottom active">
+
+                            <button class="upgradelink">
+                                <span>Current plan</span>
+                           	</button>
+
+                        </div>
+<?php } else if ($result[0]['licensePlan'] == 'Professional' && $result[0]['status'] == 'Activated') { ?>
+                        <div class="bottom DowngradeLink">
+
+                            <button>
+                                <a href="javascript:void(0);">Downgrade</a>
+                            </button>
+
+                        </div>
+
+<?php } else { ?>
+                        <div class="bottom">
+
+                            <button class="upgradelink" data-upgrade-plan="standard">
+                                <span>Upgrade to this plan</span>
+                           	</button>
+
+                        </div>
+<?php } ?>
+                </div><!--payment-plan-->
+
+            </div>
+
+            <div class="col-xs-12 col-sm-3">
+
+                <div class="payment-plan <?php if ($result[0]['licensePlan'] == 'Professional' && $result[0]['status'] == 'Activated') { ?>active<?php } ?>">
+                    <div class="top">
+                        <h3>Professional</h3>
+                        <div class="price">
+                            <i class="fa fa-eur" aria-hidden="true"></i>
+                            <span class="number">247</span>
+                            <span class="period">/m</span>
+                        </div>
+                    </div>
+                    <?php if ($result[0]['licensePlan'] == 'Professional' && $result[0]['status'] == 'Deactivated') { ?>
+                        <div class="remaining">
+                            <span><?php echo $result[0]['status']; ?></span>
+                        </div>
+                    <?php } ?>
+                    <?php if ($result[0]['licensePlan'] == 'Professional' && $result[0]['status'] == 'Activated') { ?>
+                        <div class="remaining">
+                            <span><?php if ($result[0]['subscriptionType'] == 'Monthly') { ?>Automatic renewal after <?php echo $remainingdays;
+                    } else {
+                        echo $remainingdays; ?> remaining <?php } ?></span>
+                        </div>
+<?php } ?>
+                    <ul>
+                        <li>Unlimited publishing</li>
+                        <li>Use of all templates</li>
+                        <li>Support over phone</li>
+                        <li>One time custom made campaign</li>
+                        <li>Acces to quiz, contests and viral campaigns</li>
+                        <li>5 hours of campaign advice</li>
+                    </ul>
+<?php if ($result[0]['licensePlan'] == 'Professional' && $result[0]['status'] == 'Activated') { ?>
+                        <div class="bottom active">
+
+                            <button class="">
+                                <span>Current plan</span>
+                           	</button>
+
+                        </div>
+<?php } else { ?>
+                        <div class="bottom">
+
+                            <button class="upgradelink" data-upgrade-plan="professional">
+                                <span>Upgrade to this plan</span>
+                           	</button>
+
+                        </div>
+<?php } ?>
+                </div><!--payment-plan-->
+
+            </div>
+
+            <!--<div class="col-xs-12 col-sm-3">
+
+                <div class="payment-plan">
+                    <div class="top">
+                        <h3>Enterprise</h3>
+                        <div class="price">
+                            <i class="fa fa-eur" aria-hidden="true"></i>
+                            <span class="number">-</span>
+                            <span class="period">/m</span>
+                        </div>
+                    </div>
+
+                    <ul>
+                        <li>Pricing and features on request</li>
+                    </ul>
+
+                    <div class="bottom callrequest">
+
+                        <button>
+                            <a href="javascript:void(0);">Request a call</a>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>-->
+
+    </div>
+</div><!--account-->
+<section id="popuppopupforaccountupdate" class="popupFormForDynamicPage chang_PPopup_conta" style="display:none;">
+    <div id="" class=" chang_PPopup">
+        <div class="popupFolder">
+            <div class="popupFolder--check">
+                <img src="/img/dashboard/check_icon.png">
+            </div>
+            <div class="popupFolder--span">
+                <span id="popupSpann"></span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<div class="section-popup" style="display: none;" id="error-message">
+    <div class="section-popup__alert section-popup__alert--fail">
+        <div class="section-popup__close" onclick="$('#error-message').hide();$('body').css('overflow-y', '');">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <i class="fa fa-times" aria-hidden="true"></i>
+        <span class="section-popup__title">Error</span>
+        <span class="section-popup__text message-error"></span>
+    </div>
+</div>
+<div class="section-popup" style="display: none;" id="success-message">
+    <div class="section-popup__alert section-popup__alert--succes">
+        <div class="section-popup__close" onclick="$('#success-message').hide();$('body').css('overflow-y', '');">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <i class="fa fa-check" aria-hidden="true"></i>
+        <span class="section-popup__title">Done</span>
+        <span class="section-popup__text message-success"></span>
+    </div>
+</div>
+<?php
+// this script is for drift as because it must be added before </body>
+if ($jsonArray['drift']['status'] == "on") {
+            ?>
+            <script type="text/javascript" src="<?php $_SERVER['SERVER_NAME'] ?>/js/Drift/jsfordrift.js">
+
+
+    </script>
+<?php } ?>

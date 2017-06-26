@@ -1,0 +1,73 @@
+<?php
+
+$controller = strtolower($controller);
+$action = strtolower($action);
+$t = time();
+switch ($controller) {
+    case 'gallery':
+        switch ($action) {
+
+            case 'galleryview':
+                $this->headScript()
+                        ->prependFile($this->basePath() . '/js/front/booking.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/camera.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/owl.carousel.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.easing.1.3.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.mobilemenu.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.equalheights.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.ui.totop.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/superfish.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/script.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery-migrate-1.2.1.js?version=' . $t);
+
+                break;
+             case 'tour':
+                $this->headScript()
+                        ->prependFile($this->basePath() . '/js/front/jquery.easing.1.3.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.mobilemenu.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.equalheights.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.ui.totop.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/superfish.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/script.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery-migrate-1.2.1.js?version=' . $t);
+                break;
+            case 'offer':
+                $this->headScript()
+                    ->prependFile($this->basePath() . '/js/front/jquery.easing.1.3.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.mobilemenu.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.equalheights.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.ui.totop.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/superfish.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/script.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery-migrate-1.2.1.js?version=' . $t);
+                break;
+            case 'blog':
+                $this->headScript()
+                   ->prependFile($this->basePath() . '/js/front/jquery.easing.1.3.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.mobilemenu.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.equalheights.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.ui.totop.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/superfish.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/script.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery-migrate-1.2.1.js?version=' . $t);
+                break;
+            case 'contact':
+                $this->headScript()
+                    ->prependFile($this->basePath() . '/js/front/jquery.easing.1.3.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.mobilemenu.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.equalheights.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery.ui.totop.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/superfish.js?version=' . $t)
+                    ->prependFile($this->basePath() . '/js/front/TMForm.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/script.js?version=' . $t)
+                        ->prependFile($this->basePath() . '/js/front/jquery-migrate-1.2.1.js?version=' . $t);
+                break;
+        }
+        break;
+
+    default:
+        break;
+}
+echo $this->headScript()
+        ->prependFile('//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
+?>

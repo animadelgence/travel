@@ -1,0 +1,31 @@
+{
+    "domain": {
+	        "domain_name"     	: "travel.localhost",
+	        "home"          	: "/opt/lampp/htdocs/travel/_docroot_",
+            	"master_domain" 	: "travel"
+    },
+    "sendgridaccount": {
+	        "adddefaultto"   	: "koushik.roy@delgence.com",
+	        "addfrom"	 	: "info@smartfanpage.com",
+	        "username"   		: "ArnabSmartfanpage",
+	        "password"   		: "Testing1@",
+	        "parenthost"   		: "54.72.188.10",
+	        "supportTeam"   	: "support@smartfanpage.com",
+	        "footerNote"   		: "Smartfanpage Team",
+	        "hostKey"   		: "smartfanpage"
+    },
+   	"payment": {
+	        "merchantId"    		 	: "2537894220",
+	        "merchantKey"     		 	: "00db268e1251e1f8150d9c6d79a90a17629b947d",
+	        "shopId"	   			: "0",
+	        "apiKey"	   			: "SFP_Encryption_Key_Is_Here"
+	   },
+     "database": {
+	        "database_dsn"   		: "mysql:dbname=travel;host=localhost",
+	        "database_host"   		: "localhost",
+	        "database_name"			: "travel",
+	        "database_username"	  	: "",
+	        "database_password"	 	: ""
+    }
+    
+}

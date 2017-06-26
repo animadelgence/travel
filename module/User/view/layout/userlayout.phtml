@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>Account Settings</title>
+     <link rel="shortcut icon" type="image/x-icon" href="<?php echo $this->basePath('img/front/favicon.ico') ?>" />
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+        <!-- Google Fonts -->
+        <?php include 'usercss.phtml'; ?>
+        <?php include 'userjs.phtml'; ?>
+</head>
+<body>
+    <?php  $root = $_SERVER['DOCUMENT_ROOT'];
+           $root1 = explode("/_docroot_",$root);
+            $path = $root1[0]."/module/Front/view/layout/navbar.phtml";
+        include $path; ?>
+    <?php echo $this->content; ?>
+    
+</body>
+</html>
